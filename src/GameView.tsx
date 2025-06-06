@@ -1,10 +1,10 @@
-import { useState, useEffect, useMemo, useOptimistic } from 'react'
-import { Link, useLoaderData, useParams } from 'react-router'
+import { useState, useEffect, useMemo } from 'react'
+import { Link, useParams } from 'react-router'
 import type { Game, Board } from './game.ts'
 import { NewGameButton } from './NewGameButton.tsx'
 import { TicTacToeMoApiClient } from './api.ts'
 import { io } from "socket.io-client"
-import { GAME_UPDATED, USER_JOINED, REQUEST_GAME } from '../constants'
+import { GAME_UPDATED, REQUEST_GAME } from '../constants'
 
 // Utility function used to produced the class string for a cell at a given coordinate 
 function getCellClassString(curGame: Game, x: number, y: number) {
@@ -122,7 +122,7 @@ export function GameView() {
         <div className="grid grid-cols-5 gap-2 max-w-fit">
           {
             game.board.map((row, rowIndex) =>
-              row.map((cell, cellIndex) =>
+              row.map((_, cellIndex) =>
                 <div
                   key={`${cellIndex}, ${rowIndex}`}
                   onClick={() => moveAndSetGame(game.id, cellIndex, rowIndex)}
