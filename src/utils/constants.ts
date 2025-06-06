@@ -4,4 +4,4 @@
 
 // For production use
 export const SERVER_URL = ''
-export const CLIENT_URL = 'https://tictactoemo-git-addwebsockets-harrisons-projects-baa0d10b.vercel.app/'
+export const CLIENT_URL = 'https://tictactoemo-git-deploybranch-harrisons-projects-baa0d10b.vercel.app/'
