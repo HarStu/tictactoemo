@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node --watch --inspect=0.0.0.0:9229 server.ts",
+    "dev": "node --watch server.ts",
     "test": "vitest",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "docker:run": "docker run -p 8000:3000 -p 9229:9229 tictactoemo"
+    "docker:run": "docker run -p 8000:3000 tictactoemo"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.8",
