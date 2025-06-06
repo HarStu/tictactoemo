@@ -1,7 +1,7 @@
 // For development use
-export const SERVER_URL = 'http://localhost:3000'
-export const CLIENT_URL = 'http://localhost:5173'
+// export const SERVER_URL = 'http://localhost:3000'
+// export const CLIENT_URL = 'http://localhost:5173'
 
 // For production use
-// export const SERVER_URL = ''
-// export const CLIENT_URL = ''
+export const SERVER_URL = ''
+export const CLIENT_URL = 'https://tictactoemo-git-addwebsockets-harrisons-projects-baa0d10b.vercel.app/'
