@@ -6,8 +6,13 @@ import { generateInitialGame, move } from '../game.ts'
 import type { Game, Player, Board } from '../game.ts'
 import type { TicTacToeMoApi } from '../api.ts'
 
+const DATABASE_URL = process.env.DATABASE_URL
+console.log(DATABASE_URL)
+if (!DATABASE_URL) throw Error("no valid database url found")
+
 export class DbTicTacToeMo implements TicTacToeMoApi {
-  private db = drizzle(process.env.DATABASE_URL!)
+
+  private db = drizzle(DATABASE_URL as string)
 
   async createGame(): Promise<Game> {
     const newGame = generateInitialGame()
