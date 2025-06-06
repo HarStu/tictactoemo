@@ -5,7 +5,7 @@ import { NewGameButton } from './NewGameButton.tsx'
 import { TicTacToeMoApiClient } from './api.ts'
 import { io } from "socket.io-client"
 import { GAME_UPDATED, REQUEST_GAME } from '../constants'
-import { CLIENT_URL } from './utils/constants.ts'
+import { SERVER_URL } from './utils/constants.ts'
 
 // Utility function used to produced the class string for a cell at a given coordinate 
 function getCellClassString(curGame: Game, x: number, y: number) {
@@ -82,7 +82,7 @@ export function GameView() {
 
   useEffect(() => {
     // setup the socket client
-    const socket = io(CLIENT_URL)
+    const socket = io(SERVER_URL)
     socket.on("connect", () => {
       console.log('connected to socket')
       // send a signal about joining the game room
