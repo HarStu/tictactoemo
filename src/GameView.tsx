@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useOptimistic } from 'react'
 import { Link, useLoaderData, useParams } from 'react-router'
-import { type Game } from './game.ts'
+import type { Game, Board } from './game.ts'
 import { NewGameButton } from './NewGameButton.tsx'
 import { TicTacToeMoApiClient } from './api.ts'
 import { io } from "socket.io-client"
@@ -99,6 +99,10 @@ export function GameView() {
   }, [gameId])
 
   const moveAndSetGame = async (id: string, x: number, y: number) => {
+    if (!game || game.done) return;
+    let newBoard: Board = game.board;
+    newBoard[y][x] = game.currentPlayer;
+    setGame({ ...game, board: newBoard })
     const newGame = await api.makeMove(id, x, y)
     console.log(`Game obtained from moveAndSetGame: ${newGame}`)
     setGame(newGame);
