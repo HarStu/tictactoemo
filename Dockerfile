@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm i --frozen-lockfile
+RUN npm i
 
 EXPOSE 3000
 EXPOSE 9229

@@ -66,7 +66,7 @@ app.post("/api/game/:id/move", async (req, res) => {
 })
 
 // Create an http server running out express event handler
-const server = app.listen(PORT, () => console.log(`Server is listening at http://localhost:${PORT}`))
+const server = app.listen(PORT, () => console.log(`Server is listening`))
 
 // Share the http server we've created with socket.io
 // Setup CORS for socket.io server?
@@ -107,5 +107,3 @@ io.on('connection', (socket) => {
     io.to(socket.id).emit(GAME_UPDATED, game)
   })
 })
-
-// ViteExpress.listen(app, PORT, () => console.log(`Server is listening at http://localhost:${PORT}`))
