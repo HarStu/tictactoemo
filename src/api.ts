@@ -1,7 +1,8 @@
 import type { Game } from "./game.ts"
 import { generateInitialGame, move } from "./game.ts"
+import { SERVER_URL } from './utils/constants.ts'
 
-const BASE_URL = `http://localhost:3000`
+const BASE_URL = SERVER_URL
 
 export interface TicTacToeMoApi {
   // Function which generates a new game

@@ -10,13 +10,6 @@ export type Game = {
   contextMessage: string
 }
 
-// Utility function for quickly glancing at the board
-function logBoard(curGame: Game) {
-  for (let y = 0; y < 3; y++) {
-    console.log(curGame.board[y])
-  }
-}
-
 export function generateInitialGame(): Game {
   const newGame: Game = {
     id: crypto.randomUUID(),

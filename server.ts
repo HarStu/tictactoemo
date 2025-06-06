@@ -5,13 +5,14 @@ import { InMemoryTicTacToeMoApi } from "./src/api.ts"
 import { DbTicTacToeMo } from "./src/db/db.ts"
 import { Server } from "socket.io"
 import { USER_JOINED, GAME_UPDATED, REQUEST_GAME } from './constants.ts'
+import { CLIENT_URL } from './src/utils/constants.ts'
 import cors from "cors"
 
-const PORT = parseInt(process.env.PORT || "3000");
+const PORT = 3000;
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: '*',
   methods: ['GET', 'POST']
 }))
 
@@ -34,8 +35,8 @@ app.get("/api/pendingGames", async (req, res) => {
   try {
     const gamesList = await api.getPendingGames()
     res.status(200).json(gamesList)
-  } catch {
-    res.status(404).json({ error: `Error fetching gamesList` })
+  } catch (err) {
+    res.status(404).json({ error: `Error fetching gamesList: ${err}` })
   }
 })
 
@@ -71,7 +72,7 @@ const server = app.listen(PORT, () => console.log(`Server is listening at http:/
 // Setup CORS for socket.io server?
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: '*',
     methods: ['GET', 'POST'],
   }
 })

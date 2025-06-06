@@ -5,7 +5,6 @@ import { Lobby } from './Lobby.tsx'
 import { GameView } from './GameView.tsx'
 import App from './App.tsx'
 import './index.css'
-import { StrictMode } from 'react'
 
 const api = new TicTacToeMoApiClient()
 
